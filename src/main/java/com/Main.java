@@ -1,9 +1,9 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -85,5 +85,26 @@ public class Main {
         String s = (String) s2.collect(Collectors.joining("is not equal to "));
         System.out.println(s); // super
 
+        System.out.println(line);
+        //Consumer
+        //does not return anything so mostly is used to printing
+        Consumer<String> upperCase = ss -> System.out.println(ss.toUpperCase());
+        upperCase.accept(list.toString());
+
+        System.out.println(line);
+        //Function
+        //Accepts and returns something
+        Function<List<SimpleEntity>, Integer> func = x -> x.get(1).getAge();
+        Integer apply = func.apply(list);
+        System.out.println(apply);
+
+        System.out.println(line);
+        //Supplier
+        //Accepts nothing and returns something
+        Random random = new Random();
+        int rand = random.nextInt(list.size()-1);
+
+        Supplier<SimpleEntity> ran = () -> list.get(rand);
+        System.out.println(ran.get());
     }
 }
