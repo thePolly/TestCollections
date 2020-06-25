@@ -89,14 +89,13 @@ public class Main {
         //Consumer
         //does not return anything so mostly is used to printing
         Consumer<String> upperCase = ss -> System.out.println(ss.toUpperCase());
-        upperCase.accept(list.toString());
+        list.stream().forEach(x -> upperCase.accept(x.getName()));
 
         System.out.println(line);
         //Function
         //Accepts and returns something
         Function<List<SimpleEntity>, Integer> func = x -> x.get(1).getAge();
-        Integer apply = func.apply(list);
-        System.out.println(apply);
+        list.stream().map(x -> func.apply(list)).forEach(System.out::println);
 
         System.out.println(line);
         //Supplier
