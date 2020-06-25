@@ -20,7 +20,26 @@ Some of the examples:
 5. anyMatch allMatch noneMatch
 
 ### Creating stream
-
-
-
+1. Out of list
+```
+list.stream()
+```
+2. via agruments 
+```
+Stream<Integer> stream = Stream.of(1,2);
+```
 ### Generating stream
+can be generated via Stream.generate()
+```
+Stream.generate(new Random()::nextInt) 
+    .limit(10).forEach(System.out::println);  
+```
+### Consumer
+Accepts, doesnt return
+mostly used for printing out 
+
+### Function 
+Accepts and returns
+
+### Supplier 
+Doesnt accepts, returns
